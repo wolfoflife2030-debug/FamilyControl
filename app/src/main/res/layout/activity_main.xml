@@ -1,293 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background">
+    android:layout_height="match_parent">
 
-    <!-- ===================== شاشة رمز الدخول ===================== -->
     <LinearLayout
-        android:id="@+id/pinLayout"
+        android:id="@+id/pinSection"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         android:padding="32dp">
 
         <TextView
+            android:id="@+id/tvPinTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="🔒"
-            android:textSize="48sp"
-            android:layout_marginBottom="16dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="أدخل رمز الدخول للمتابعة"
-            android:textSize="18sp"
-            android:textColor="@color/textPrimary"
-            android:layout_marginBottom="24dp" />
+            android:text="أدخل الرقم السري"
+            android:textSize="22sp" />
 
         <EditText
-            android:id="@+id/pinInput"
+            android:id="@+id/etPin"
             android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:inputType="numberPassword"
-            android:gravity="center"
-            android:textSize="24sp"
-            android:letterSpacing="0.5"
-            android:hint="••••"
-            android:maxLength="6"
-            android:background="@android:drawable/edit_text" />
-
-        <Button
-            android:id="@+id/btnUnlock"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/primary"
-            android:textColor="#FFFFFF"
-            android:text="دخول" />
-
-        <TextView
-            android:id="@+id/pinError"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/accentOff"
-            android:layout_marginTop="12dp"
-            android:visibility="gone"
-            android:text="رمز غير صحيح، حاول مجدداً" />
-
-    </LinearLayout>
-
-    <!-- ===================== شاشة التحكم ===================== -->
-    <LinearLayout
-        android:id="@+id/controlLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="24dp"
-        android:visibility="gone">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="التحكم الأبوي"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="@color/textPrimary"
-            android:layout_marginBottom="32dp" />
-
-        <!-- بطاقة الواي فاي -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#FFFFFF"
-            android:padding="20dp"
-            android:elevation="2dp"
-            android:layout_marginBottom="16dp">
-
-            <TextView
-                android:id="@+id/wifiStatus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="@color/textPrimary"
-                android:text="الواي فاي: ---"
-                android:layout_marginBottom="12dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnWifiOn"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/accentOn"
-                    android:textColor="#FFFFFF"
-                    android:text="تشغيل" />
-
-                <Button
-                    android:id="@+id/btnWifiOff"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:backgroundTint="@color/accentOff"
-                    android:textColor="#FFFFFF"
-                    android:text="إيقاف" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- بطاقة البلوتوث -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#FFFFFF"
-            android:padding="20dp"
-            android:elevation="2dp">
-
-            <TextView
-                android:id="@+id/btStatus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="@color/textPrimary"
-                android:text="البلوتوث: ---"
-                android:layout_marginBottom="12dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnBtOn"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/accentOn"
-                    android:textColor="#FFFFFF"
-                    android:text="تشغيل" />
-
-                <Button
-                    android:id="@+id/btnBtOff"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:backgroundTint="@color/accentOff"
-                    android:textColor="#FFFFFF"
-                    android:text="إيقاف" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- بطاقة حظر الإنترنت الشامل -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#FFFFFF"
-            android:padding="20dp"
-            android:elevation="2dp"
-            android:layout_marginTop="16dp">
-
-            <TextView
-                android:id="@+id/vpnStatus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textColor="@color/textPrimary"
-                android:text="حظر الإنترنت الشامل: ---"
-                android:layout_marginBottom="4dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="#757575"
-                android:text="يقطع كل اتصال بالإنترنت (واي فاي + بيانات الجوال). مع الحماية المتقدمة: يعمل تلقائياً عند الإقلاع ولا يمكن تعطيله حتى بإغلاق التطبيق بالقوة"
-                android:layout_marginBottom="12dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnBlockOn"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/accentOff"
-                    android:textColor="#FFFFFF"
-                    android:text="حظر الآن" />
-
-                <Button
-                    android:id="@+id/btnBlockOff"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:backgroundTint="@color/accentOn"
-                    android:textColor="#FFFFFF"
-                    android:text="إلغاء الحظر" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- زر الحماية المتقدمة -->
-        <Button
-            android:id="@+id/btnAdvancedLock"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@color/primary"
-            android:textColor="#FFFFFF"
-            android:text="تفعيل الحماية المتقدمة (منع العبث)" />
-
-        <TextView
-            android:id="@+id/advancedStatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="11sp"
-            android:textColor="#757575"
             android:gravity="center"
-            android:layout_marginTop="6dp"
-            android:text="يقفل أيقونتي الواي فاي والبلوتوث في قائمة الاتصالات، ويمنع الفورمات وحذف التطبيق. يتطلب إعداد Device Owner عبر ADB" />
+            android:hint="PIN"
+            android:inputType="numberPassword"
+            android:maxLength="8" />
 
-        <!-- بطاقة العزل الكامل -->
+        <Button
+            android:id="@+id/btnPinOk"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="دخول" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/controlSection"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="#FFFFFF"
-            android:padding="20dp"
-            android:elevation="2dp"
-            android:layout_marginTop="16dp">
+            android:padding="24dp">
 
             <TextView
+                android:id="@+id/tvOwner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/accentOff"
-                android:text="⚠️ العزل الكامل (Kiosk)"
-                android:layout_marginBottom="4dp" />
+                android:textIsSelectable="true"
+                android:textSize="14sp" />
+
+            <Switch
+                android:id="@+id/swBlock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="حجب الواي فاي والبلوتوث نهائياً"
+                android:textSize="18sp" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="#757575"
-                android:text="يُخفي شريط الحالة بالكامل (الساعة/البطارية/الإشعارات) ويقفل الجهاز على هذا التطبيق فقط، فلا يستطيع الطفل فتح أي تطبيق آخر إطلاقاً، حتى بعد إعادة التشغيل."
-                android:layout_marginBottom="12dp" />
+                android:layout_marginTop="24dp"
+                android:text="الواي فاي"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvWifiStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="الحالة: -" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="البلوتوث"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvBtStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="الحالة: -" />
 
             <Button
-                android:id="@+id/btnFullIsolation"
+                android:id="@+id/btnLock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/accentOff"
-                android:textColor="#FFFFFF"
-                android:text="تفعيل العزل الكامل" />
+                android:layout_marginTop="32dp"
+                android:text="قفل التطبيق" />
 
-            <TextView
-                android:id="@+id/isolationStatus"
+            <Button
+                android:id="@+id/btnRemove"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="11sp"
-                android:textColor="#757575"
-                android:gravity="center"
-                android:layout_marginTop="6dp"
-                android:text="الحالة: غير مفعّل" />
-
+                android:layout_marginTop="16dp"
+                android:text="إزالة الحماية بالكامل" />
         </LinearLayout>
-
-    </LinearLayout>
-
+    </ScrollView>
 </FrameLayout>
